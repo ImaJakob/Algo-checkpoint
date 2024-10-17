@@ -1,0 +1,38 @@
+# Initialize counters
+length = 0
+words = 0
+vowels = 0
+vowels_list = ['a', 'e', 'i', 'o', 'u']
+
+# Get the input sentence character by character
+sentence = input("Software developer.: ")
+
+# Set the initial state to "no word yet"
+in_word = False
+
+# Loop through each character in the sentence
+for char in sentence:
+    if char == ".":
+        break  # End when we encounter the period
+
+    # Increase the length counter for each character
+    length += 1
+    
+    # Count vowels (check if the character is a vowel, ignoring case)
+    if char.lower() in vowels_list:
+        vowels += 1
+    
+    # Detect word boundaries
+    if char != " ":
+        if not in_word:
+            # We're entering a word
+            words += 1
+            in_word = True
+    else:
+        # We're in a space, so no word now
+        in_word = False
+
+# Output the results
+print("Length of the sentence:", length)
+print("Number of words:", words)
+print("Number of vowels:", vowels)
